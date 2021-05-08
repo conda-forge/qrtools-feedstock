@@ -11,7 +11,7 @@ source:
   sha256: e6f0034ea884b8461ebff4bef2cf546fef4dfeca1e3948ac975f8f14fe45381a
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -22,7 +22,7 @@ requirements:
   run:
     - python >=3.6
     - pypng
-    - zbar
+    - zbar-py
     - pillow
 
 test:
