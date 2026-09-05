@@ -1,0 +1,50 @@
+schema_version: 1
+
+context:
+  name: qrtools
+  version: "0.0.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/qrtools-${{ version }}.tar.gz
+  sha256: e6f0034ea884b8461ebff4bef2cf546fef4dfeca1e3948ac975f8f14fe45381a
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - pypng
+    - zbar
+    - pillow
+
+tests:
+  - python:
+      imports:
+        - qrtools
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  license: GPL-3.0-only
+  license_file: LICENCE
+  summary: A suite of tools for handling QR codes.
+  description: |
+    A suite of tools for handling QR codes.
+  homepage: https://github.com/primetang/qrtools
+  repository: https://github.com/primetang/qrtools
+  documentation: https://github.com/primetang/qrtools
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
